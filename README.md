@@ -412,7 +412,7 @@ Este proyecto está bajo la licencia [MIT](LICENSE). Puedes usarlo libremente en
 
 <div align="center">
 
-Hecho con ⚡ para la enseñanza de Arquitectura de Computadores
+Proyecto educativo · Universidad de Vigo · Área de Ingeniería de Sistemas y Automática
 
 [🚀 Ver demo en vivo](https://ebalvis.github.io/Simulador-interactivo-de-maquina-simple/)
 
