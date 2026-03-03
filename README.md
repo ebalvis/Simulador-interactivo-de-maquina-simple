@@ -13,9 +13,8 @@
 
 [🚀 Demo en vivo](https://ebalvis.github.io/Simulador-interactivo-de-maquina-simple/) · [📖 Manual de uso](#manual-de-uso) · [⚙️ Set de instrucciones](#set-de-instrucciones) · [📝 Ejemplos](#programas-de-ejemplo)
 
-<img src="assets/screenshot-editor.png" alt="Editor de ensamblador con referencia del set de instrucciones" width="700">
 <img src="assets/screenshot-ejecucion.png" alt="Editor de ensamblador con referencia del set de instrucciones" width="700">
-<img src="assets/screenshot-fibonacci.png" alt="Editor de ensamblador con referencia del set de instrucciones" width="700">
+
 </div>
 
 ---
