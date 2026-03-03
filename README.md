@@ -1,4 +1,4 @@
-# 🖥️ Simulador de Máquina Simple
+# 🖥️ Simulador Interactivo de Máquina Simple
 
 <div align="center">
 
@@ -7,12 +7,13 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-success?logo=github)
 
-**Simulador interactivo de una CPU simplificada con ensamblador, ejecución paso a paso y visualización en tiempo real de registros, memoria y flags.**
+**Simulador interactivo de una CPU simplificada con ensamblador integrado, ejecución paso a paso y visualización en tiempo real de registros, memoria y flags.**
 
-[Demo en vivo](#demo) · [Instalación](#instalación) · [Manual de uso](#manual-de-uso) · [Set de instrucciones](#set-de-instrucciones) · [Ejemplos](#programas-de-ejemplo)
+[🚀 Demo en vivo](https://ebalvis.github.io/Simulador-interactivo-de-maquina-simple/) · [📖 Manual de uso](#manual-de-uso) · [⚙️ Set de instrucciones](#set-de-instrucciones) · [📝 Ejemplos](#programas-de-ejemplo)
 
-<img src="assets/screenshot-editor.png" alt="Captura del editor" width="700">
+<img src="assets/screenshot-editor.png" alt="Editor de ensamblador con referencia del set de instrucciones" width="700">
 
 </div>
 
@@ -22,8 +23,9 @@
 
 - [Descripción](#descripción)
 - [Características](#características)
-- [Demo](#demo)
-- [Instalación](#instalación)
+- [Capturas de pantalla](#capturas-de-pantalla)
+- [Demo en vivo](#demo-en-vivo)
+- [Instalación local](#instalación-local)
 - [Manual de uso](#manual-de-uso)
 - [Arquitectura de la máquina](#arquitectura-de-la-máquina)
 - [Set de instrucciones](#set-de-instrucciones)
@@ -50,9 +52,9 @@ Está diseñado como herramienta educativa para cursos de:
 
 - **Editor de ensamblador** con detección de errores en tiempo de ensamblado
 - **Ejecución paso a paso** (Step) o continua (Run) con velocidad ajustable
-- **4 registros de propósito general** (R0–R3) con indicador visual de modificación
+- **4 registros de propósito general** (R0–R3) con indicador visual LED de modificación
 - **64 celdas de memoria** con resaltado de accesos en tiempo real
-- **Flags de estado**: Zero (Z) y Negativo (N)
+- **Flags de estado**: Zero (Z) y Negativo (N) con indicadores luminosos
 - **Contador de programa** (PC) y contador de ciclos
 - **20 instrucciones** que cubren aritmética, lógica, comparación, saltos y E/S
 - **4 programas de ejemplo** precargados para aprendizaje inmediato
@@ -60,33 +62,42 @@ Está diseñado como herramienta educativa para cursos de:
 - **100% cliente** — sin servidor, sin dependencias, funciona offline
 - **Responsivo** — se adapta a pantallas de escritorio y móvil
 
-## Demo
+## Capturas de pantalla
 
-### Opción 1: GitHub Pages
+### Editor de ensamblador
+Editor integrado con selector de programas de ejemplo y referencia completa del set de instrucciones.
 
-Si el repositorio tiene GitHub Pages habilitado:
+<img src="assets/screenshot-editor.png" alt="Vista del editor ASM" width="700">
 
-```
-https://<tu-usuario>.github.io/maquina-simple/
-```
+### Vista de ejecución — Factorial
+Ejecución paso a paso del programa Factorial de 5. Se observa el resaltado azul de la instrucción actual (PC=0), los registros inicializados a cero y el panel de programa con las 10 instrucciones ensambladas.
 
-### Opción 2: Local
+<img src="assets/screenshot-ejecucion.png" alt="Ejecución del factorial" width="700">
 
-Simplemente abre `index.html` en cualquier navegador moderno. No requiere servidor web.
+### Vista de ejecución — Fibonacci
+Ejecución del programa Fibonacci tras 19 ciclos. Los registros muestran los valores intermedios (R0=1, R1=1, R2=2, R3=7), la salida muestra la secuencia parcial `0, 1, 1, 2` y el PC apunta a la instrucción 9.
 
-## Instalación
+<img src="assets/screenshot-fibonacci.png" alt="Ejecución de Fibonacci" width="700">
+
+## Demo en vivo
+
+👉 **[https://ebalvis.github.io/Simulador-interactivo-de-maquina-simple/](https://ebalvis.github.io/Simulador-interactivo-de-maquina-simple/)**
+
+No requiere instalación. Funciona directamente en cualquier navegador moderno.
+
+## Instalación local
 
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/<tu-usuario>/maquina-simple.git
-cd maquina-simple
+git clone https://github.com/ebalvis/Simulador-interactivo-de-maquina-simple.git
+cd Simulador-interactivo-de-maquina-simple
 ```
 
 ### Ejecutar
 
 ```bash
-# Opción 1: Abrir directamente
+# Opción 1: Abrir directamente en el navegador
 open index.html          # macOS
 xdg-open index.html      # Linux
 start index.html         # Windows
@@ -102,7 +113,7 @@ python3 -m http.server 8080
 
 ### 1. Escribir código
 
-En la pantalla del **Editor ASM**, escribe tu programa en ensamblador o selecciona uno de los ejemplos precargados.
+En la pantalla del **Editor ASM**, escribe tu programa en ensamblador o selecciona uno de los ejemplos precargados (Suma, Factorial, Cuenta atrás, Fibonacci).
 
 ```asm
 ; Los comentarios empiezan con punto y coma
@@ -115,7 +126,7 @@ HALT              ; Detener ejecución
 
 ### 2. Ensamblar
 
-Pulsa el botón **▶ Ensamblar**. Si hay errores de sintaxis, se mostrarán debajo del editor con el número de línea correspondiente.
+Pulsa el botón **▶ ENSAMBLAR**. Si hay errores de sintaxis, se mostrarán debajo del editor con el número de línea correspondiente.
 
 ### 3. Ejecutar
 
@@ -128,18 +139,19 @@ Una vez ensamblado, se muestra la vista de ejecución con los siguientes control
 | **Ejecutar** | Ejecutar continuamente |
 | **Pausar** | Pausar la ejecución continua |
 | **Reset** | Reiniciar la CPU al estado inicial |
-| **Velocidad** | Ajustar la velocidad de ejecución continua |
+| **Velocidad** | Slider para ajustar la velocidad de ejecución |
 
 ### 4. Observar
 
 Durante la ejecución puedes observar en tiempo real:
 
-- **Registros**: Los valores de R0–R3, con resaltado amarillo cuando se modifican
-- **PC**: El contador de programa indica la siguiente instrucción
-- **Flags Z y N**: Se iluminan cuando están activos
-- **Programa**: La instrucción actual se resalta en azul
+- **Registros**: Los valores de R0–R3, con LED amarillo y resaltado cuando se modifican
+- **PC**: El contador de programa indica la siguiente instrucción a ejecutar
+- **Flags Z y N**: Los LEDs se iluminan (azul y rojo) cuando están activos
+- **Programa**: La instrucción actual se resalta en azul con indicador lateral
 - **Memoria**: Las celdas accedidas se resaltan en púrpura
-- **Salida**: Los valores emitidos con `OUT` aparecen en la consola de salida
+- **Salida**: Los valores emitidos con `OUT` aparecen como chips verdes en el panel de salida
+- **Ciclos**: Contador de instrucciones ejecutadas
 
 ## Arquitectura de la máquina
 
@@ -149,7 +161,7 @@ Durante la ejecución puedes observar en tiempo real:
 |------------|---------------|
 | Registros de propósito general | 4 (R0, R1, R2, R3) |
 | Tamaño de palabra | Entero con signo (JavaScript Number) |
-| Memoria | 64 celdas direccionables |
+| Memoria | 64 celdas direccionables (0x00–0x3F) |
 | Contador de programa (PC) | 0 – 63 |
 | Flags | Z (Zero), N (Negativo) |
 | Entrada/Salida | Cola de entrada, buffer de salida |
@@ -186,10 +198,10 @@ Durante la ejecución puedes observar en tiempo real:
 
 Cada instrucción sigue el ciclo clásico:
 
-1. **Fetch** — Leer instrucción en `MEM[PC]`
+1. **Fetch** — Leer instrucción en `programa[PC]`
 2. **Decode** — Decodificar opcode y operandos
-3. **Execute** — Ejecutar la operación
-4. **Store** — Almacenar resultado (si aplica)
+3. **Execute** — Ejecutar la operación en la ALU
+4. **Writeback** — Almacenar resultado en registro/memoria
 5. **Update PC** — Incrementar PC o aplicar salto
 
 ## Set de instrucciones
@@ -209,7 +221,7 @@ Cada instrucción sigue el ciclo clásico:
 | `ADD` | `ADD Rx, Ry, Rz` | Rx = Ry + Rz |
 | `SUB` | `SUB Rx, Ry, Rz` | Rx = Ry − Rz |
 | `MUL` | `MUL Rx, Ry, Rz` | Rx = Ry × Rz |
-| `DIV` | `DIV Rx, Ry, Rz` | Rx = Ry ÷ Rz (división entera) |
+| `DIV` | `DIV Rx, Ry, Rz` | Rx = Ry ÷ Rz (división entera, Rz=0 → 0) |
 
 ### Lógica
 
@@ -235,7 +247,7 @@ Cada instrucción sigue el ciclo clásico:
 | `JG` | `JG dir` | Salta si N=0 y Z=0 (mayor que) |
 | `JL` | `JL dir` | Salta si N=1 (menor que) |
 
-> **Importante**: Las direcciones de salto se refieren al **número de instrucción** (base 0), no al número de línea del código fuente. Los comentarios y líneas vacías no cuentan.
+> **Importante**: Las direcciones de salto se refieren al **número de instrucción** (base 0), no al número de línea del código fuente. Los comentarios y líneas vacías no cuentan como instrucciones.
 
 ### Control y E/S
 
@@ -306,6 +318,7 @@ HALT
 
 ```asm
 ; Genera los primeros términos de Fibonacci
+; Salida: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
 LOADI R0, 0        ; a = 0
 LOADI R1, 1        ; b = 1
 LOADI R3, 8        ; Contador de iteraciones
@@ -331,35 +344,37 @@ HALT
 ## Estructura del proyecto
 
 ```
-maquina-simple/
-├── index.html              # Punto de entrada principal
+Simulador-interactivo-de-maquina-simple/
+├── index.html                 # Punto de entrada principal
 ├── src/
 │   ├── css/
-│   │   └── styles.css      # Estilos de la interfaz
+│   │   └── styles.css         # Estilos de la interfaz
 │   └── js/
-│       ├── cpu.js           # Núcleo de la CPU (registros, ALU, ejecución)
-│       ├── assembler.js     # Ensamblador (parser, tokenizer)
-│       ├── ui.js            # Renderizado de la interfaz
-│       └── app.js           # Estado global y controladores
+│       ├── cpu.js             # Núcleo de la CPU (registros, ALU, ejecución)
+│       ├── assembler.js       # Ensamblador (parser, tokenizer, ejemplos)
+│       ├── ui.js              # Renderizado de la interfaz
+│       └── app.js             # Estado global y controladores
 ├── examples/
-│   ├── 01-suma.asm          # Suma de dos números
-│   ├── 02-factorial.asm     # Factorial de 5
-│   ├── 03-cuenta-atras.asm  # Cuenta atrás
-│   ├── 04-fibonacci.asm     # Serie de Fibonacci
-│   ├── 05-maximo.asm        # Máximo de dos números
-│   └── 06-memoria.asm       # Uso de LOAD/STORE
+│   ├── 01-suma.asm            # Suma de dos números
+│   ├── 02-factorial.asm       # Factorial de 5
+│   ├── 03-cuenta-atras.asm    # Cuenta atrás
+│   ├── 04-fibonacci.asm       # Serie de Fibonacci
+│   ├── 05-maximo.asm          # Máximo de dos números
+│   └── 06-memoria.asm         # Uso de LOAD/STORE
 ├── docs/
-│   ├── ARCHITECTURE.md      # Documentación de la arquitectura
-│   ├── ISA.md               # Referencia del set de instrucciones
-│   └── TUTORIAL.md          # Tutorial paso a paso
+│   ├── ARCHITECTURE.md        # Documentación de la arquitectura
+│   ├── ISA.md                 # Referencia completa del ISA
+│   └── TUTORIAL.md            # Tutorial paso a paso para principiantes
 ├── assets/
-│   └── screenshot-editor.png
+│   ├── screenshot-editor.png
+│   ├── screenshot-ejecucion.png
+│   └── screenshot-fibonacci.png
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.md
 │   │   └── feature_request.md
 │   └── workflows/
-│       └── deploy.yml       # GitHub Pages deployment
+│       └── deploy.yml         # Deploy automático a GitHub Pages
 ├── .gitignore
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
@@ -380,18 +395,19 @@ El proyecto sigue una separación clara de responsabilidades:
 | **UI** | `src/js/ui.js` | Renderizado HTML de todos los paneles y componentes |
 | **App** | `src/js/app.js` | Estado global, controladores de eventos, bucle de ejecución |
 
-### Convenciones de código
+### Tecnologías
 
-- JavaScript ES5 compatible (sin transpilador necesario)
-- Concatenación de strings para templates HTML (máxima compatibilidad)
-- Sin dependencias externas (excepto Google Fonts opcional)
-- Funciones globales para event handlers del HTML
+- **JavaScript ES5** — máxima compatibilidad, sin transpilador
+- **CSS3** con variables, grid y animaciones
+- **HTML5** semántico
+- **Google Fonts** — IBM Plex Mono (fallback a Courier New)
+- **Sin dependencias externas** — zero build, zero install
 
 ### Añadir nuevas instrucciones
 
 1. Añadir el opcode en `OPCODES` dentro de `cpu.js`
-2. Añadir la info de la instrucción en `INSTRUCTION_INFO`
-3. Implementar el case en `stepCPU()`
+2. Añadir la entrada en `INSTRUCTION_INFO`
+3. Implementar el `case` en `stepCPU()`
 4. Añadir el parsing en `assemble()` dentro de `assembler.js`
 5. Actualizar la documentación en `docs/ISA.md`
 
@@ -420,5 +436,7 @@ Este proyecto está bajo la licencia [MIT](LICENSE). Puedes usarlo libremente en
 <div align="center">
 
 Hecho con ⚡ para la enseñanza de Arquitectura de Computadores
+
+[🚀 Ver demo en vivo](https://ebalvis.github.io/Simulador-interactivo-de-maquina-simple/)
 
 </div>
