@@ -1,0 +1,20 @@
+; Serie de Fibonacci
+; Resultado esperado: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+LOADI R0, 0
+LOADI R1, 1
+LOADI R3, 8
+OUT R0
+OUT R1
+; Bucle
+ADD R2, R0, R1
+OUT R2
+LOADI R0, 0
+ADD R0, R1, R0
+LOADI R1, 0
+ADD R1, R2, R1
+LOADI R2, 1
+SUB R3, R3, R2
+LOADI R2, 2
+CMP R3, R2
+JNZ 6
+HALT
