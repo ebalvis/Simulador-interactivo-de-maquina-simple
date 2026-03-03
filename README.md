@@ -168,9 +168,8 @@ Durante la ejecución puedes observar en tiempo real:
 
 ### Diagrama de bloques
 
-```
 <img src="assets/arquitectura-cpu.png" alt="Arquitectura de la maquina simple" width="700">
-```
+
 
 ### Ciclo de ejecución
 
